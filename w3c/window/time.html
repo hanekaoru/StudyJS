@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script type="text/javascript">
+    var c = 0;
+    var t;
+
+    function time() {
+        document.getElementById("txt").value = c;
+        c++;
+        t = setTimeout("time()", 10);
+    }
+    function timeStop(){
+    	clearTimeout(t);
+	}	    	
+    </script>
+</head>
+
+<body>
+    <form action="">
+        <input type="button" value="display" onclick="time()">
+        <input type="text" id="txt">
+        <input type="button" value="stop" onclick="timeStop()">
+    </form>
+</body>
+
+</html>

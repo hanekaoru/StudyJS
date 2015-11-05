@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+    window.onload = function() {
+        var para = document.createElement("p");
+        var node = document.createTextNode("this is new para");
+        para.appendChild(node);
+        var element = document.getElementById("div1");
+        element.appendChild(para);
+    }
+    function del(){
+    	var parent=document.getElementById("div1");
+    	var child=document.getElementById("p2");
+    	parent.removeChild(child);
+    }
+    </script>
+</head>
+
+<body>
+    <div id="div1">
+        <p id="p1">这是一个段落</p>
+        <p id="p2">这是另一个段落</p>
+        <button id='btn' onclick="del()">删除p2</button>
+    </div>
+</body>
+
+</html>

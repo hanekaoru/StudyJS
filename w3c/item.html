@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <script>
+    window.onload = function() {
+        document.getElementById("hab").onclick = displayDate;
+    }
+
+    function changetext(id) {
+        id.innerHTML = "谢谢!";
+    }
+
+    function displayDate() {
+        document.getElementById("hab").innerHTML = new Date();
+    }
+
+    function upperCase() {
+        document.getElementById("txt").value = document.getElementById("txt").value.toUpperCase();
+    }
+
+    function over(obj) {
+        obj.innerHTML = "谢谢";
+    }
+
+    function out(obj) {
+        obj.innerHTML = "把鼠标移到上面";
+    }
+    </script>
+</head>
+
+<body>
+    <h1 onclick="this.innerHTML='谢谢！'">请点击该文本</h1>
+    <h1 onclick="changetext(this)">请点击该文本1</h1>
+    <p id="hab">date</p>
+    <input type="text" id="txt" onchange="upperCase()">
+    <div style="background-color:green;width:120px;height:20px;padding:40px;color:#ffffff;" onmouseover="over(this);" onmouseout="out(this);">把鼠标移到上面</div>
+</body>
+
+</html>

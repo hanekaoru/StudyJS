@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+    function employee(name, job, born) {
+        this.name = name;
+        this.job = job;
+        this.born = born;
+    }
+    // var bill = new employee("Bill Gates", "Engineer", 1985);
+    // employee.prototype.salary = null;
+    // bill.salary = 2000;
+    // document.write(bill.salary);
+    window.onload = function() {
+        var variables = "";
+        for (var name in this) {
+            variables += name + "<br />";
+        }
+        document.write(variables);
+    }
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
