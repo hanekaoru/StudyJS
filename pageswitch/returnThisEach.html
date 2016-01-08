@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="gb2312"/>
+    <title></title>
+    <style>
+    </style>
+    <script src="js/jquery-1.8.3/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<span>1</span>
+<span>1</span>
+<span>1</span>
+<span>1</span>
+<script>
+    /**
+     * 第一个this：jquery的对象（这里可以理解为4个span数组的对象）
+     * 第二个this：单个dom对象（这里可以理解为1个span）
+     */
+
+        //模仿定义一个插件函数
+    $.fn.color = function (c) {
+        //这个this是一个jquery对象，在例子中就是$('span')之后取得的元素数组（4个span），这时候each只是一个循环的方法，
+        //去执行每一个元素(一个span)的css方法
+        this.each(function () {
+            //在each的回调函数里面，所以这里的this指的是span这个dom元素对象，$(this)就是span的jquery对象
+            $(this).css('color', c);
+        })
+    }
+    //这里为什么返回undefined呢？就是因为执行完this.each以后，没有返回对象
+    alert($('span').color('red')) //undefined
+
+    //加了 return this.each... 表示返回jQuery对象，以便链接式操作
+    $.fn.color2 = function (c) {
+        //*首先，在jquery可以这样调用$("p").css("color","red").innerHTML("hello");这里我们需要知道执行完$("p").css("color","red")后返回的是什么？
+        //就是这个$("p")，然后继续执行$("p").innerHTML("hello")，返回的还是$("p")，所以这里称为链式调用。
+        //在css或者innerHTML里面最后都可以理解为return this；这里就是$("p")
+
+        //然后我们知道this.each()其实是一个jquery方法，所以执行完后，返回的还是this，在这里就是$('span');
+        //而each就是普通的jquery的执行循环函数，里面的function是对每一个元素进行的操作，这里可以理解为单个span
+        return this.each(function () {
+            $(this).css('color', c);
+        })
+    }
+    alert($('span').color2('blue').html(123)) // object
+</script>
+</body>
+</html>
