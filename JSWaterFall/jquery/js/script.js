@@ -42,4 +42,3 @@ function loadData(parentId, subClass) {
     var $scrollHeight = $(window).scrollTop();
     return $lastHeight > ($winHeight + $scrollHeight);
 }
-

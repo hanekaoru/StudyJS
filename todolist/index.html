@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" value="todolist">
+    <link rel="stylesheet" href="myself/index.css"/>
+    <title>ToDoList</title>
+</head>
+<body>
+<header id="header">
+    <section>
+        <form action="javascript:addDoingList()" id="form">
+            <label for="enterlist">ToDoList</label>
+            <input type="text" id="enterlist" placeholder="enter your list" required="required" autocomplete="true"/>
+        </form>
+    </section>
+</header>
+<section>
+    <h2>Doing List<span id="doingcount">0</span></h2>
+    <ol id="doinglist"></ol>
+    <h2>Done List<span id="donecount">0</span></h2>
+    <ul id="donelist"></ul>
+</section>
+<footer>
+    Copyright © 2016 www.windyyong.com <a href="javascript:clear()">clear</a>
+</footer>
+<script type="text/javascript" src="myself/index.js"></script>
+</body>
+</html>

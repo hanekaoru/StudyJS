@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>domReady</title>
+    <script src="domready.js"></script>
+</head>
+<body>
+<div id="showMsg"></div>
+<div>
+    <img src="1.jpg"/>
+    <img src="2.jpg"/>
+    <img src="3.jpg"/>
+    <img src="4.jpg"/>
+    <img src="5.jpg"/>
+    <img src="6.jpg"/>
+</div>
+<script>
+    var show = document.getElementById("showMsg");
+    var time1 = null;
+    var time2 = null;
+    //    无论顺序如何，onload总是后面执行
+    window.onload = function () {
+        show.innerHTML += "onload loaded!" + "<br>";
+        time2 = new Date().getTime();
+        show.innerHTML += "onload finished time:" + time2 + "<br>";
+        show.innerHTML += "time distance:" + (time2 - time1) + "ms" + "<br>";
+    };
+    //    domReady加载，速度比较快
+    myReady(function () {
+        show.innerHTML += "myReady loaded!" + "<br>";
+        time1 = new Date().getTime();
+        show.innerHTML += "myReady finished time:" + time1 + "<br>";
+    });
+
+</script>
+</body>
+</html>

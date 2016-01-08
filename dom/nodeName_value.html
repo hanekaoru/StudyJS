@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--nodeName，nodeValue实验-->
+<div id="container">
+    这是一个元素节点
+</div>
+<script>
+    var divNode = document.getElementById("container");
+    console.log("nodeType:" + divNode.nodeType + ",nodeName:" + divNode.nodeName + ",nodeValue:" + divNode.nodeValue);
+    console.log("------");
+    for (var i = 0; i < divNode.childNodes.length; i++) {
+        console.log("nodeType:" + divNode.childNodes[i].nodeType + ",nodeName:" + divNode.childNodes[i].nodeName + ",nodeValue:" + divNode.childNodes[i].nodeValue);
+    }
+    console.log("------");
+    var attrNode = divNode.attributes[0];
+    console.log("nodeType:" + attrNode.nodeType + ",nodeName:" + attrNode.nodeName + ",nodeValue:" + attrNode.nodeValue);
+    var textNode = divNode.childNodes[0];
+    console.log("nodeType:" + textNode.nodeType + ",nodeName:" + textNode.nodeName + ",nodeValue:" + textNode.nodeValue);
+    var commentNode = document.body.childNodes[1];
+    console.log("nodeType:" + commentNode.nodeType + ",nodeName:" + commentNode.nodeName + ",nodeValue:" + commentNode.nodeValue);
+    var doctypeNode = document.doctype;
+    console.log("nodeType:" + doctypeNode.nodeType + ",nodeName:" + doctypeNode.nodeName + ",nodeValue:" + doctypeNode.nodeValue);
+</script>
+</body>
+</html>
