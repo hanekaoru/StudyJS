@@ -23,11 +23,47 @@
         function PageSwitch(element, options) {
             this.settings = $.extend(true, $.fn.PageSwitch.defaults, options || {});
             this.element = element;
+            this._initDom();
             this.init();
         }
 
         //以下为定义PageSwitch的方法
         PageSwitch.prototype = {
+            //初始化dom元素
+            _initDom : function () {
+                var me = this,
+                    sectionsCls = me.settings.containers.sections.substring(1),
+                    sectionCls = me.settings.containers.section.substring(1),
+                    introCls = me.settings.containers.intro.substring(1),
+                    activeCls = me.settings.containers.activeClass.substring(1);
+                var divSections = $("<div></div>").addClass(sectionsCls).appendTo(me.element);
+                //根据传进来的页面数加载
+                for (var i = 0; i < me.settings.pagesCounts; i++) {
+                    var divSection = $("<div></div>").addClass(sectionCls).attr("id", sectionCls + i).appendTo(divSections);
+                    var divIntro = $("<div></div>").addClass(introCls).appendTo(divSection);
+                }
+                divSections.find(sectionCls + ":first").addClass(activeCls);
+                //下面为自己添加的一些样式：采用立即执行函数，减少me的作用域变量
+                (function () {
+                    var sec1 = divSections.find(".intro:eq(0)");
+                    var h11 = $("<h1></h1>").addClass("title").html("switchPage").appendTo(sec1);
+                    var p1 = $("<p></p>").html("switchPage").appendTo(sec1);
+
+                    var sec2 = divSections.find(".intro:eq(1)");
+                    var h12 = $("<h1></h1>").addClass("title").html("Example").appendTo(sec2);
+                    var p2 = $("<p></p>").html("HTML markup example to define 4 sections").appendTo(sec2);
+                    var img2 = $("<img>").attr("src", "images/example.png").appendTo(sec2);
+
+                    var sec3 = divSections.find(".intro:eq(2)");
+                    var h13 = $("<h1></h1>").addClass("title").html("switchPage").appendTo(sec3);
+                    var p3 = $("<p></p>").html("The plug-in configuration parameters").appendTo(sec3);
+                    var img3 = $("<img>").attr("src", "images/example2.png").appendTo(sec3);
+
+                    var sec4 = divSections.find(".intro:eq(3)");
+                    var h14 = $("<h1></h1>").addClass("title").html("THE END").appendTo(sec4);
+                    var p4 = $("<p></p>").html("Everything will be okay in the end. If it's not okay, it's not the end.").appendTo(sec4);
+                })();
+            },
             init : function () {
                 //现在这里的this指的是一个变量，它保存有的jqueryDOM元素是id为container的div
                 var me = this;
@@ -38,7 +74,7 @@
                 me.section = me.sections.find(me.containers.section);
 
                 me.vertical = me.settings.vertical;
-                me.pagesCounts = me.pageCount();
+                me.pagesCounts = me.settings.pagesCounts;
                 me.activeIndex = (me.settings.activeIndex >= 0 && me.settings.activeIndex < me.pagesCounts) ? me.settings.activeIndex : 0;
                 //添加事件
                 me.canScroll = true;
@@ -51,10 +87,6 @@
                 }
 
                 me._initEvent();
-            },
-            //获取有多少页
-            pageCount : function () {
-                return this.section.length;
             },
             //获取一个屏的长度或者高度
             switchLength : function () {
@@ -218,6 +250,7 @@
             page : ".pages",//页码条ul
             activeClass : ".active"//被激活的页码条
         },
+        pagesCounts : 1,//页面数量
         activeIndex : 0,//默认起始页面
         easing : "ease-in-out",//特效方式，ease-in,ease-out,linear
         duration : 1000,//每次动画执行的时间
@@ -229,8 +262,8 @@
     };
     $("#container").PageSwitch({
         loop : true,
-        vertical : false
-
+        vertical : false,
+        pagesCounts : 4,
     });
 
 })
