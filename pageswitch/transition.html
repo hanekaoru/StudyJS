@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            margin: 50px;
+            transition: all 2000ms linear;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var box = document.getElementById("box");
+    box.onclick = function () {
+        box.style.transform = "translate(300px,300px)"
+        box.style.background = "black";
+    }
+    //如何判断浏览器是否支持某个css属性
+    //实现思路:通过判断某个element的style中是否存在某个css属性
+    //实现代码:
+    //        (function (temp) {
+    //            if (temp.style["attrName"] !== undefined) {
+    //                return true;
+    //            }
+    //            return false;
+    //        })(domElement);
+
+</script>
+</body>
+</html>
